@@ -5,6 +5,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -35,12 +36,13 @@ public class UserPointsController {
 		 return ResponseEntity.ok().body(userPoints);
 	}
 	
-	@ApiOperation(value = "POST Endpoint to update points for a user",notes = "This endpoint is used to update points spent by the user.")
+	@ApiOperation(value = "PUT Endpoint to update points of a user",notes = "This endpoint is used to update points spent by the user. The oldest points"
+			+ "will be spent first.")
 	@ApiResponses(value= {
 			@ApiResponse(code = 200, message = "Ok", responseContainer = "Map"),
 			@ApiResponse(code = 500, message = "Internal server error")
 	})
-	@PostMapping(path="deduct-points")
+	@PutMapping(path="deduct-points")
 	public ResponseEntity<Object> deductPoints(@RequestParam(name="points")int points){
 		return ResponseEntity.ok().body(service.deductPoints(points));
 	}

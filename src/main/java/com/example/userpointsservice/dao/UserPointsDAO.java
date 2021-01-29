@@ -50,7 +50,11 @@ public class UserPointsDAO {
 		if(map.containsKey(name)) {
 			map.put(name, map.get(name) - points);
 		}else {
-			map.put(name, -points);
+			if(points < 0) {
+				map.put(name, 0);
+			}else {
+				map.put(name, -points);
+			}
 		}
 	}
 
