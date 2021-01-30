@@ -16,10 +16,10 @@ import com.example.userpointsservice.entity.UserPoints;
 public interface UserPointsRepository extends CrudRepository<UserPoints, String> {
 	
 
-	@Query(value = "SELECT * from USER_POINTS p WHERE (p.points!=0 and p.user=(SELECT id FROM USER u WHERE u.email=:email)) order by p.transaction_date asc", nativeQuery = true)
+	@Query(value = "SELECT * from USER_POINTS p WHERE (p.points!=0 and p.user_id=(SELECT id FROM USER u WHERE u.email=:email)) order by p.transaction_date asc", nativeQuery = true)
 	List<UserPoints> findPayers(@Param("email") String email);
 	
 	
-	@Query(value = "SELECT * FROM USER_POINTS p WHERE p.user=(SELECT id FROM USER u WHERE u.email=:email)", nativeQuery = true)
+	@Query(value = "SELECT * FROM USER_POINTS p WHERE p.user_id=(SELECT id FROM USER u WHERE u.email=:email)", nativeQuery = true)
 	List<UserPoints> findPointsByEmail(@Param("email")String email);
 }
