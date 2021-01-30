@@ -3,7 +3,10 @@ package com.example.userpointsservice.entity;
 import java.util.Date;
 import java.util.UUID;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -44,7 +47,13 @@ public class UserPoints {
 			example = "2021-01-29T07:00:00")
 	private Date transactionDate;
 	
+	@JsonIgnore
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "User")
+	private User user;
+	
 	public UserPoints() {
 		this.id = UUID.randomUUID().toString();
 	}
+
 }

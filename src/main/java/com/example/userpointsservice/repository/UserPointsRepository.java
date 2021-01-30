@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import com.example.userpointsservice.entity.UserPoints;
 
@@ -14,6 +15,11 @@ import com.example.userpointsservice.entity.UserPoints;
 @Repository
 public interface UserPointsRepository extends CrudRepository<UserPoints, String> {
 	
-	@Query(value = "SELECT p from UserPoints p WHERE p.points!=0 order by p.transactionDate asc")
-	List<UserPoints> findPayers();
+
+	@Query(value = "SELECT * from USER_POINTS p WHERE (p.points!=0 and p.user=(SELECT id FROM USER u WHERE u.email=:email)) order by p.transaction_date asc", nativeQuery = true)
+	List<UserPoints> findPayers(@Param("email") String email);
+	
+	
+	@Query(value = "SELECT * FROM USER_POINTS p WHERE p.user=(SELECT id FROM USER u WHERE u.email=:email)", nativeQuery = true)
+	List<UserPoints> findPointsByEmail(@Param("email")String email);
 }
