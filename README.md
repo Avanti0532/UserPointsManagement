@@ -7,7 +7,7 @@ with the following username and password
 user name : sa
 password: password
 
-Please make sure to add lombok plugin in your IDE
+Please make sure to add **lombok plugin** in your IDE
 
 **Swagger url**: http://localhost:8080/swagger-ui/
 
