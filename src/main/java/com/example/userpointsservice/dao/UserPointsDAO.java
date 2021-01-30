@@ -22,8 +22,8 @@ public class UserPointsDAO {
 		return repository.save(points);
 	}
 
-	public HashMap<String, Integer> deductPoints(int points) {
-		List<UserPoints> payersList = repository.findPayers();
+	public HashMap<String, Integer> deductPoints(int points, String email) {
+		List<UserPoints> payersList = repository.findPayers(email);
 		HashMap<String, Integer> map = new HashMap<>();
 		int count = 0;
 		for(UserPoints p: payersList) {
@@ -58,7 +58,7 @@ public class UserPointsDAO {
 		}
 	}
 
-	public List<UserPoints> getBalancePoints() {
-		return (List<UserPoints>) repository.findAll();
+	public List<UserPoints> getBalancePoints(String email) {
+		return (List<UserPoints>) repository.findPointsByEmail(email);
 	}	
 }

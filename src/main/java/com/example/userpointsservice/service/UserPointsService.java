@@ -21,12 +21,12 @@ public class UserPointsService {
 		return userPointsDAO.addPoints(points) ;
 	}
 
-	public HashMap<String, Integer> deductPoints(int points) {
-		return userPointsDAO.deductPoints(points);
+	public HashMap<String, Integer> deductPoints(int points, String email) {
+		return userPointsDAO.deductPoints(points, email);
 	}
 
-	public List<UserPoints> getBalancePoints() {
-		return userPointsDAO.getBalancePoints();
+	public List<UserPoints> getBalancePoints(String email) {
+		return userPointsDAO.getBalancePoints(email);
 	}
 
 }
