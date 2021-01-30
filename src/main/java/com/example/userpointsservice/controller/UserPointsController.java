@@ -35,6 +35,7 @@ public class UserPointsController {
 	@ApiOperation(value = "POST Endpoint to add points for a user",notes = "This endpoint is used to add points of a user per payer.")
 	@ApiResponses(value= {
 			@ApiResponse(code = 200, message = "Ok",response = UserPoints.class),
+			@ApiResponse(code = 400, message = "Bad Request"),
 			@ApiResponse(code = 500, message = "Internal server error")
 	})
 	@PostMapping(path="add-points", produces = MediaType.APPLICATION_JSON_VALUE)
