@@ -4,9 +4,9 @@ This web service is implemented using Spring Boot(version 2.4.2) and in memory d
 To access the database, please follow the link: http://localhost:8080/h2-console 
 with the following username and password
 
-user name : sa
-password: password
-database: testdb
+1. user name : sa
+2. password: password
+3. database: testdb
 
 Please make sure to add **lombok plugin** in your IDE
 
