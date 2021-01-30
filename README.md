@@ -11,7 +11,7 @@ Please make sure to add lombok plugin in your IDE
 
 **Swagger url**: http://localhost:8080/swagger-ui/
 
-User table is created with the following fields. Please check src/resources/data.sql for all the entries in this table - 
+User table is created with the following fields. Please check src/main/resources/data.sql for all the entries in this table - 
 1. first name
 2. last name 
 3. email
