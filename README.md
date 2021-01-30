@@ -9,24 +9,33 @@ password: password
 
 Please make sure to add lombok plugin in your IDE
 
-Swagger link: http://localhost:8080/swagger-ui/
+**Swagger url**: http://localhost:8080/swagger-ui/
 
-POST Request:
+User table is created with the following fields. Please check src/resources/data.sql for all the entries in this table - 
+1. first name
+2. last name 
+3. email
 
-http://localhost:8080/add-points
+User Points will be stored in UserPoints table with the following fields:
+1. payer name
+2. points
+3. transaction date
+
+**POST Request**: User points will be added to user's account based on the user email id
+
+http://localhost:8080/add-points?email=lilyjohn@gmail.com
 
 Body:
-
 {
     "payerName":"DANNON",
     "points":1000,
     "transactionDate":"2020-11-08T09:00:00"
 }
 
-PUT Request:
+**PUT Request**: User points will be deducted from user's account by providing user email id
 
-http://localhost:8080/deduct-points?points=5000
+http://localhost:8080/deduct-points?points=5000&email=lilyjohn@gmail.com
 
-GET Request:
+**GET Request**: Balance points of the user will be retrieved based on user email id
 
-http://localhost:8080/get-points
+http://localhost:8080/get-points?email=lilyjohn@gmail.com
